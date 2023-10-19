@@ -19,6 +19,7 @@
     "react-native": "0.72.5",
     "react-native-circular-progress": "^1.3.9",
     "react-native-elements": "^3.4.3",
+    "react-native-feather": "^1.1.2",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-reanimated": "~3.3.0",
     "react-native-screens": "~3.22.0",
@@ -38,5 +39,5 @@
   },
   "version": "1.0.0",
   "private": true,
-  "name": "reanimatedmoti"
+  "name": "food-delivery"
 }
