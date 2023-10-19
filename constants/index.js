@@ -29,6 +29,21 @@ export const categories = [
         name: 'Sweets',
         image: require('../assets/images/pizzaIcon.png'),
     },
+    {
+        id: 7,
+        name: 'Drinks',
+        image: require('../assets/images/pizzaIcon.png'),
+    },
+    {
+        id: 8,
+        name: 'Fast Food',
+        image: require('../assets/images/pizzaIcon.png'),
+    },
+    {
+        id: 9,
+        name: 'Mexican',
+        image: require('../assets/images/pizzaIcon.png'),
+    }
 
 ]
 
