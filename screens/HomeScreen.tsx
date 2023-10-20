@@ -1,97 +1,179 @@
+import React from "react";
+import { View, SafeAreaView, Text, Dimensions } from "react-native";
+import Animated, {
+    useSharedValue,
+    useAnimatedStyle,
+    useAnimatedScrollHandler,
+    interpolate,
+    interpolateColor,
+    Extrapolate,
+} from "react-native-reanimated";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-import React from 'react';
-import { View, Text,ScrollView, StyleSheet, TextInput, StatusBar } from 'react-native';
-import { Icon} from '@rneui/themed';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { themeColors } from '../theme';
-import Categories from '../components/Categories';
+const { width, height } = Dimensions.get("screen");
 
-type RootStackParamList = {
-    Home: undefined;
-    Profile: { userId: string };
-    Feed: { sort: 'latest' | 'top' } | undefined;
-};
+const textColor = "#2A3B38";
+const gray = "#A0A0A0";
+const slideWidth = width * 2 / 3;
+const slideHeight = height * 2 / 3;
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-const HomeScreen = ({ }: Props) => {
+const slides = [
+    {
+        text: "Code",
+        icon: "code-slash",
+    },
+    {
+        text: "Enjoy Life",
+        icon: "cafe",
+    },
+    {
+        text: "@useRNRocket",
+        icon: "rocket-sharp",
+    },
+    {
+        text: "Code",
+        icon: "code-slash",
+    },
+    {
+        text: "Enjoy Life",
+        icon: "cafe",
+    },
+    {
+        text: "@useRNRocket",
+        icon: "rocket-sharp",
+    }
+];
+
+const Slide = ({ slide, scrollOffset, index }: any) => {
+    const animatedStyle = useAnimatedStyle(() => {
+        const input = scrollOffset.value / slideWidth;
+        const inputRange = [index - 1, index, index + 1];
+
+        return {
+            transform: [
+                {
+                    scale: interpolate(
+                        input,
+                        inputRange,
+                        [0.8, 1, 0.8],
+                        Extrapolate.CLAMP
+                    ),
+                },
+            ],
+        };
+    });
     return (
-        <View>
-            <View style={styles.inputContainer}>
-            <View style={styles.input}>
-                <View style={styles.map}>
-                    <Icon name="search" color="gray" size={30} />
-                    <TextInput
-                        placeholder="Search"
-                    />
-                </View>
-                <View style={styles.map}>
-                    <View style={styles.pipe} />
-                        <Icon name="map" color="gray" size={20} />
-                    <Text >
-                        Casablanca, Mr
-                    </Text>
-                </View>
-            </View>
-            <View style={styles.tune}>
-                <Icon name="tune" size={30} />
-            </View>
-           
-            </View>
-            {/* main  */}
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={{
-                    paddingBottom: 20,
+        <Animated.View
+            key={index}
+            style={[
+                {
+                    flex: 1,
+                    width: slideWidth,
+                    height: slideHeight,
+                    paddingVertical: 10,
+                },
+                animatedStyle,
+            ]}
+        >
+            <View
+                style={{
+                    padding: 10,
+                    alignItems: "center",
+                    borderColor: textColor,
+                    borderWidth: 3,
+                    borderRadius: 10,
+                    height: "100%",
+                    justifyContent: "center",
                 }}
             >
-                <Categories />
-            </ScrollView>
-        </View>
-        
-        
+                <Ionicons name={slide.icon} size={100} color={textColor} />
+                <Text
+                    style={{
+                        color: textColor,
+                        fontSize: 20,
+                    }}
+                >
+                    {slide.text}
+                </Text>
+            </View>
+        </Animated.View>
     );
-}
-export default HomeScreen;
+};
 
-const styles = StyleSheet.create({
-    inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 30
-    },
-    input: {
-        height: 50,
-        margin: 10,
-        borderWidth: 1,
-        borderColor: 'gray',
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        borderRadius: 20,
-        textAlign: 'center',
-        width: '95%',
+const Indicator = ({ scrollOffset, index }: any) => {
+    const animatedStyle = useAnimatedStyle(() => {
+        const input = scrollOffset.value / slideWidth;
+        const inputRange = [index - 1, index, index + 1];
+        const animatedColor = interpolateColor(input, inputRange, [
+            gray,
+            textColor,
+            gray,
+        ]);
+
+        return {
+            width: interpolate(input, inputRange, [20, 40, 20], Extrapolate.CLAMP),
+            backgroundColor: animatedColor,
+        };
+    });
+
+    return (
+        <Animated.View
+            style={[
+                {
+                    marginHorizontal: 5,
+                    height: 20,
+                    borderRadius: 10,
+                    backgroundColor: textColor,
+                },
+                animatedStyle,
+            ]}
+        />
+    );
+};
+
+const HomeScreen = () => {
+    const scrollOffset = useSharedValue(0);
+    const scrollHandler = useAnimatedScrollHandler({
+        onScroll: (event) => {
+            scrollOffset.value = event.contentOffset.x;
         },
-    map: {
-        justifyContent: 'flex-end',
-        flexDirection: 'row',
-        alignItems: 'center',
-        margin: 10
-    },
-    pipe: {
-        height: "70%",
-        width: 1,
-        backgroundColor: 'gray',
-        margin: 5
-    },
-    tune: {
-        backgroundColor: themeColors.bgColor(1),
-        height: 40,
-        width: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 30
-    },
+    });
 
+    return (
+        <SafeAreaView style={{ flex: 1, justifyContent: "space-around" }}>
+            <Animated.ScrollView
+                scrollEventThrottle={1}
+                horizontal
+                snapToInterval={slideWidth}
+                decelerationRate="fast"
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                    alignItems: "center",
+                    paddingHorizontal: (width - slideWidth) / 2,
+                    justifyContent: "center",
+                }}
+                onScroll={scrollHandler}
+            >
+                {slides.map((slide, index) => {
+                    return (
+                        <Slide
+                            key={index}
+                            index={index}
+                            slide={slide}
+                            scrollOffset={scrollOffset}
+                        />
+                    );
+                })}
+            </Animated.ScrollView>
+            <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
+                {slides.map((_, index) => {
+                    return (
+                        <Indicator key={index} index={index} scrollOffset={scrollOffset} />
+                    );
+                })}
+            </View>
+        </SafeAreaView>
+    );
+};
 
-})
+export default HomeScreen;
