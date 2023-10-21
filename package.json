@@ -14,6 +14,7 @@
     "expo": "^49.0.3",
     "expo-font": "~11.4.0",
     "moti": "~0.22.0",
+    "pokemontcgsdk": "^2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.5",

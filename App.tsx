@@ -19,7 +19,7 @@ function App() {
     <NavigationContainer>
       <StatusBar barStyle="light-content" />
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

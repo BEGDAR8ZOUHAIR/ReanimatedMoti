@@ -1,5 +1,7 @@
 import React from "react";
-import { View, SafeAreaView, Text, Dimensions } from "react-native";
+import {
+    View, SafeAreaView, Text, Dimensions, Image, StyleSheet
+} from "react-native";
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -9,6 +11,7 @@ import Animated, {
     Extrapolate,
 } from "react-native-reanimated";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { slides } from "../Data";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -16,33 +19,6 @@ const textColor = "#2A3B38";
 const gray = "#A0A0A0";
 const slideWidth = width * 2 / 3;
 const slideHeight = height * 2 / 3;
-
-const slides = [
-    {
-        text: "Code",
-        icon: "code-slash",
-    },
-    {
-        text: "Enjoy Life",
-        icon: "cafe",
-    },
-    {
-        text: "@useRNRocket",
-        icon: "rocket-sharp",
-    },
-    {
-        text: "Code",
-        icon: "code-slash",
-    },
-    {
-        text: "Enjoy Life",
-        icon: "cafe",
-    },
-    {
-        text: "@useRNRocket",
-        icon: "rocket-sharp",
-    }
-];
 
 const Slide = ({ slide, scrollOffset, index }: any) => {
     const animatedStyle = useAnimatedStyle(() => {
@@ -87,6 +63,7 @@ const Slide = ({ slide, scrollOffset, index }: any) => {
                 }}
             >
                 <Ionicons name={slide.icon} size={100} color={textColor} />
+
                 <Text
                     style={{
                         color: textColor,
@@ -177,3 +154,11 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+const styles = StyleSheet.create ({
+    image: {
+        width: "50%",
+        height: "50%",
+        resizeMode: "contain",
+    },
+})
