@@ -1,28 +1,12 @@
-// In App.js in a new project
+import react from "react";
+import { Provider } from "react-redux";
+import { store } from "./App/store";
+import Tabs from "./App/components/index";
 
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import { StatusBar } from 'react-native';
-const Stack = createNativeStackNavigator<RootStackParamList>();
-
-type RootStackParamList = {
-  Home: undefined;
-
-  
-};
-
-function App() {
-  return (
-    <NavigationContainer>
-      <StatusBar barStyle="light-content" />
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+export default function App() {
+    return (
+        <Provider store={store}>
+            <Router />
+        </Provider>
+    );
 }
-
-export default App;

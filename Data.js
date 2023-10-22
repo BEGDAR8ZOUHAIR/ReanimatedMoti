@@ -4,6 +4,7 @@ export const slides = [
     {
         text: "Code",
         icon: "code-slash",
+        name: "Animation",
     },
     {
         text: "Enjoy Life",
