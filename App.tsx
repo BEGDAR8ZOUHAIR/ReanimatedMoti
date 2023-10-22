@@ -6,7 +6,7 @@ import Tabs from "./App/components/index";
 export default function App() {
     return (
         <Provider store={store}>
-            <Router />
+            <Tabs  />
         </Provider>
     );
 }
