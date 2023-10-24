@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import HomeScreen from './Home'
+import MapScreen from '../screens/MapScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -24,7 +24,7 @@ const Navigation = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={HomeScreen}
+                component={MapScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View
@@ -54,7 +54,7 @@ const Navigation = () => {
 
             <Tab.Screen
                 name="New Quote"
-                component={HomeScreen}
+                component={MapScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View
@@ -83,7 +83,7 @@ const Navigation = () => {
                 }}
             />
             <Tab.Screen name="Loading"
-                component={HomeScreen}
+                component={MapScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View
