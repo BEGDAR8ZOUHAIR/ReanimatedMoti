@@ -7,7 +7,7 @@ import HomeScreen from './Home'
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Navigation = () => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Tabs;
+export default Navigation;

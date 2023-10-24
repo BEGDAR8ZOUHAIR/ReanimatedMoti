@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Tabs from "./components/Tab";
+import Navigation from "./components/Navigation";
 
 const Stack = createStackNavigator();
 
@@ -13,8 +13,8 @@ export default function App() {
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen
-                        name="Nav"
-                        component={Tabs}
+                        name="Navigation"
+                        component={Navigation}
                         options={{
                             headerShown: false
                         }}
