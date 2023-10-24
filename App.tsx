@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Tabs from "./App/components/index";
+import Tabs from "./components/Tab";
 
 const Stack = createStackNavigator();
 
