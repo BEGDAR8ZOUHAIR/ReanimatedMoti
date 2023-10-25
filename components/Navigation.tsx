@@ -52,7 +52,7 @@ const Navigation = () => {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="New Quote"
                 component={MapScreen}
                 options={{
@@ -81,8 +81,8 @@ const Navigation = () => {
                         </View>
                     ),
                 }}
-            />
-            <Tab.Screen name="Loading"
+            /> */}
+            {/* <Tab.Screen name="Loading"
                 component={MapScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -109,7 +109,7 @@ const Navigation = () => {
                         </View>
                     ),
                 }}
-            />
+            /> */}
         </Tab.Navigator>
     );
 };

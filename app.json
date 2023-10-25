@@ -15,19 +15,29 @@
         "@rnmapbox/maps",
         {
           "RNMapboxMapsImpl": "mapbox",
-          "RNMapboxMapsDownloadToken":"pk.eyJ1IjoiYmVnZGFyOHpvdWhhaXIiLCJhIjoiY2xlenBlcmVhMDFmbDNwcjI4OGN6MmduNyJ9.C8WddE7zeAKKPswFe7AEjA"
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiYmVnZGFyOHpvdWhhaXIiLCJhIjoiY2xvNHdpeTByMDVvYTJsbXZxMDRyeGl4ZiJ9.EVStFwIsctTv7WeUVeOPww"
         }
       ]
     ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e826c6e0-3434-4370-be03-8f9138a22f33"
+      }
+    },
+    "android": {
+      "package": "com.begdar8zouhair.wazeapp"
     }
   }
 }
