@@ -1,15 +1,15 @@
 import react from "react";
 import { Text, View, StyleSheet } from "react-native";
-// import Mapbox from '@rnmapbox/maps';
+import Mapbox from '@rnmapbox/maps';
 
-// Mapbox.setAccessToken('sk.eyJ1IjoiYmVnZGFyOHpvdWhhaXIiLCJhIjoiY2xvNHdpeTByMDVvYTJsbXZxMDRyeGl4ZiJ9.EVStFwIsctTv7WeUVeOPww');
+Mapbox.setAccessToken('sk.eyJ1IjoiYmVnZGFyOHpvdWhhaXIiLCJhIjoiY2xvNHdpeTByMDVvYTJsbXZxMDRyeGl4ZiJ9.EVStFwIsctTv7WeUVeOPww');
 
 
 export default function MapScreen() {
     return (
         <View style={styles.page}>
             <View style={styles.container}>
-                {/* <Mapbox.MapView style={styles.map} /> */}
+                <Mapbox.MapView style={styles.map} />
                 <Text>Map</Text>
             </View>
         </View>
